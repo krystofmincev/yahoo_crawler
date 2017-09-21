@@ -1,5 +1,3 @@
 # yahoo_crawler
 
-### AKA Technicals_Crawler
-
-A python based yahoo crawler 
+A python based yahoo crawler, otherwise known as a technicals crawler 
