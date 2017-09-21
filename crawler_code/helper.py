@@ -6,6 +6,7 @@ Created on Sat Sep  9 00:34:00 2017
 @author: mincev
 """
 import pickle 
+import os.path
 
 class helper(object):
     """
@@ -21,8 +22,17 @@ class helper(object):
             -
         """
         assert type(filename) is str
-        assert filename[-4:] is not ".pkl"
         
+        overide = False
+        while os.path.isfile('obj/' + filename + '.pkl') is True and overide is False:
+            print("File already exists:\n")
+            input_overide = input("Do you want to overide the file? (y/n)\n")
+            if input_overide.lower() == 'y': 
+                overide = True 
+            else: 
+                filename = input("Choose a different filename:\n")
+        
+        assert filename[-4:] is not ".pkl"
         with open('obj/' + filename + '.pkl', 'wb') as f:
             pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)    
 

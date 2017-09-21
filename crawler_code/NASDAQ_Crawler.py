@@ -16,9 +16,9 @@ class NASDAQ_Crawler(object):
     input: 
         exchange = user provided exchange name from which to download f.info
     """
-    global url_start, url_end
-    url_start =  "http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange="
-    url_end = '&render=download'
+    global URL_START, URL_END
+    URL_START =  "http://www.nasdaq.com/screening/companies-by-industry.aspx?exchange="
+    URL_END = '&render=download'
     
     def __init__(self, exchange = "NASDAQ"):
         assert type(exchange) is str
@@ -40,7 +40,7 @@ class NASDAQ_Crawler(object):
         header = None
         for _ in range(repeat):
             try:
-                data = r.get(url_start + self.exchange + url_end)
+                data = r.get(URL_START + self.exchange + URL_END)
                 text = data.text.split('\n')
                 header = text[0]
                 if header and text is not None: break
